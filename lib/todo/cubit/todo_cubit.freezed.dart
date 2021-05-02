@@ -20,7 +20,7 @@ class _$TodoStateTearOff {
     return const _Initial();
   }
 
-  _Loaded loaded({dynamic todos = const <TodoModel>[]}) {
+  _Loaded loaded({List<TodoModel> todos = const <TodoModel>[]}) {
     return _Loaded(
       todos: todos,
     );
@@ -35,13 +35,13 @@ mixin _$TodoState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(dynamic todos) loaded,
+    required TResult Function(List<TodoModel> todos) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(dynamic todos)? loaded,
+    TResult Function(List<TodoModel> todos)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(dynamic todos) loaded,
+    required TResult Function(List<TodoModel> todos) loaded,
   }) {
     return initial();
   }
@@ -122,7 +122,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(dynamic todos)? loaded,
+    TResult Function(List<TodoModel> todos)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -162,7 +162,7 @@ abstract class _Initial implements TodoState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({dynamic todos});
+  $Res call({List<TodoModel> todos});
 }
 
 /// @nodoc
@@ -179,7 +179,10 @@ class __$LoadedCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
     Object? todos = freezed,
   }) {
     return _then(_Loaded(
-      todos: todos == freezed ? _value.todos : todos,
+      todos: todos == freezed
+          ? _value.todos
+          : todos // ignore: cast_nullable_to_non_nullable
+              as List<TodoModel>,
     ));
   }
 }
@@ -191,7 +194,7 @@ class _$_Loaded implements _Loaded {
 
   @JsonKey(defaultValue: const <TodoModel>[])
   @override
-  final dynamic todos;
+  final List<TodoModel> todos;
 
   @override
   String toString() {
@@ -219,7 +222,7 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(dynamic todos) loaded,
+    required TResult Function(List<TodoModel> todos) loaded,
   }) {
     return loaded(todos);
   }
@@ -228,7 +231,7 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(dynamic todos)? loaded,
+    TResult Function(List<TodoModel> todos)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -261,9 +264,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements TodoState {
-  const factory _Loaded({dynamic todos}) = _$_Loaded;
+  const factory _Loaded({List<TodoModel> todos}) = _$_Loaded;
 
-  dynamic get todos => throw _privateConstructorUsedError;
+  List<TodoModel> get todos => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

@@ -4,6 +4,6 @@ part of 'todo_cubit.dart';
 abstract class TodoState with _$TodoState {
   const factory TodoState.initial() = _Initial;
   const factory TodoState.loaded({
-    @Default(<TodoModel>[]) todos,
+    @Default(<TodoModel>[]) List<TodoModel> todos,
   }) = _Loaded;
 }
