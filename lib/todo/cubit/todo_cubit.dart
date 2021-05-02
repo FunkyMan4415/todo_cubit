@@ -8,7 +8,10 @@ part 'todo_cubit.freezed.dart';
 class TodoCubit extends Cubit<TodoState> {
   TodoCubit() : super(const _Initial());
 
-  void loadTodos() => emit(const _Loaded());
+  void loadTodos() => emit(
+        const _Loaded(),
+      );
+
   void addTodo(String todo) => state.maybeMap(
         loaded: (state) => emit(
           state.copyWith(
@@ -20,10 +23,11 @@ class TodoCubit extends Cubit<TodoState> {
         ),
         orElse: () => null,
       );
+
   void deleteTodo(int index) => state.maybeMap(
         loaded: (state) => emit(
           state.copyWith(
-            todos: state.todos..removeAt(index),
+            todos: List.from(state.todos)..removeAt(index),
           ),
         ),
         orElse: () => null,

@@ -18,24 +18,26 @@ class TodoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.read<TodoCubit>().toggleTodo(index),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 20,
-              color: isDone ? Colors.black38 : null,
+      child: AbsorbPointer(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 20,
+                color: isDone ? Colors.black38 : null,
+              ),
             ),
-          ),
-          Icon(
-            isDone
-                ? Icons.check_circle_outline_rounded
-                : Icons.radio_button_off_rounded,
-            color: isDone ? Theme.of(context).primaryColor : Colors.black38,
-            size: 35,
-          )
-        ],
+            Icon(
+              isDone
+                  ? Icons.check_circle_outline_rounded
+                  : Icons.radio_button_off_rounded,
+              color: isDone ? Theme.of(context).primaryColor : Colors.black38,
+              size: 35,
+            )
+          ],
+        ),
       ),
     );
   }
