@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_cubit/todo/components/addTodo.dart';
-import 'package:todo_cubit/todo/components/todo_tile.dart';
+import 'package:todo_cubit/todo/components/add_todo.dart';
 
 class TodoScreen extends StatelessWidget {
   @override
