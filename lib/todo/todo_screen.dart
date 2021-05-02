@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_cubit/todo/components/todo_tile.dart';
 
 class TodoScreen extends StatelessWidget {
   @override
@@ -7,7 +8,10 @@ class TodoScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Todo'),
       ),
-      body: Container(),
+      body: TodoTile(
+        title: 'Read an Article',
+        isDone: true,
+      ),
     );
   }
 }
