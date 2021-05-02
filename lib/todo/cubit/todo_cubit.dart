@@ -5,5 +5,5 @@ part 'todo_state.dart';
 part 'todo_cubit.freezed.dart';
 
 class TodoCubit extends Cubit<TodoState> {
-  TodoCubit() : super(TodoState.initial());
+  TodoCubit() : super(const TodoState.initial());
 }
