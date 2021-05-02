@@ -19,6 +19,12 @@ class _$TodoStateTearOff {
   _Initial initial() {
     return const _Initial();
   }
+
+  _Loaded loaded({dynamic todos = const <TodoModel>[]}) {
+    return _Loaded(
+      todos: todos,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +35,26 @@ mixin _$TodoState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(dynamic todos) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(dynamic todos)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -103,6 +113,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(dynamic todos) loaded,
   }) {
     return initial();
   }
@@ -111,6 +122,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(dynamic todos)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -123,6 +135,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
   }) {
     return initial(this);
   }
@@ -131,6 +144,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -142,4 +156,114 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements TodoState {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$LoadedCopyWith<$Res> {
+  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
+      __$LoadedCopyWithImpl<$Res>;
+  $Res call({dynamic todos});
+}
+
+/// @nodoc
+class __$LoadedCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
+    implements _$LoadedCopyWith<$Res> {
+  __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
+      : super(_value, (v) => _then(v as _Loaded));
+
+  @override
+  _Loaded get _value => super._value as _Loaded;
+
+  @override
+  $Res call({
+    Object? todos = freezed,
+  }) {
+    return _then(_Loaded(
+      todos: todos == freezed ? _value.todos : todos,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Loaded implements _Loaded {
+  const _$_Loaded({this.todos = const <TodoModel>[]});
+
+  @JsonKey(defaultValue: const <TodoModel>[])
+  @override
+  final dynamic todos;
+
+  @override
+  String toString() {
+    return 'TodoState.loaded(todos: $todos)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Loaded &&
+            (identical(other.todos, todos) ||
+                const DeepCollectionEquality().equals(other.todos, todos)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(todos);
+
+  @JsonKey(ignore: true)
+  @override
+  _$LoadedCopyWith<_Loaded> get copyWith =>
+      __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(dynamic todos) loaded,
+  }) {
+    return loaded(todos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(dynamic todos)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(todos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loaded implements TodoState {
+  const factory _Loaded({dynamic todos}) = _$_Loaded;
+
+  dynamic get todos => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

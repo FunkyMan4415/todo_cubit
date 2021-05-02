@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_cubit/todo/components/addTodo.dart';
 import 'package:todo_cubit/todo/components/todo_tile.dart';
 
 class TodoScreen extends StatelessWidget {
@@ -6,11 +7,18 @@ class TodoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todo'),
+        title: const Text('Todo List'),
       ),
-      body: TodoTile(
-        title: 'Read an Article',
-        isDone: true,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            AddTodo(),
+            const SizedBox(
+              height: 16,
+            ),
+          ],
+        ),
       ),
     );
   }
