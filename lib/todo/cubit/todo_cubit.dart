@@ -9,10 +9,13 @@ class TodoCubit extends Cubit<TodoState> {
   TodoCubit() : super(const _Initial());
 
   void loadTodos() => emit(const _Loaded());
-  void addTodo(TodoModel todo) => state.maybeMap(
+  void addTodo(String todo) => state.maybeMap(
         loaded: (state) => emit(
           state.copyWith(
-            todos: state.todos..add(todo),
+            todos: List.from(state.todos)
+              ..add(
+                TodoModel(task: todo),
+              ),
           ),
         ),
         orElse: () => null,
@@ -28,11 +31,12 @@ class TodoCubit extends Cubit<TodoState> {
 
   void toggleTodo(int index) => state.maybeMap(
         loaded: (state) {
-          final todo = state.todos[index]
-            ..copyWith(isDone: !state.todos[index].isDone);
+          final todo =
+              state.todos[index].copyWith(isDone: !state.todos[index].isDone);
           emit(
             state.copyWith(
-              todos: state.todos..replaceRange(index, index, [todo]),
+              todos: List.from(state.todos)
+                ..replaceRange(index, index + 1, [todo]),
             ),
           );
         },
